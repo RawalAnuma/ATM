@@ -19,19 +19,25 @@ public class ATMAccount {
     }
 
     public void deposit(double amount) {
-        if (amount > 0){
-            balance += amount;
+        if (amount >= 0){
+            this.balance += amount;
         } else {
-            System.out.println("Deposit amount must be positive.");
+            System.out.println("Deposit amount must be greater than 0.");
         }
     }
 
     public void withdraw(double amount) {
-        if (amount > 0 && amount <= balance) {
-            balance = balance - amount;
-        } else{
-            System.out.println("Withdrawal amount must be positive and less than or equal to the balance.");
+       if(amount <= balance && amount > 0) {
+            this.balance -= amount;
+        } else if (amount <= 0) {
+            System.out.println("Withdrawal amount must be greater than 0.");
+        } else {
+            System.out.println("Insufficient balance for withdrawal.");
         }
+    }
+
+    public void displayBalance(){
+        System.out.println("Your current balance: Rs." + balance);
     }
 
 }
